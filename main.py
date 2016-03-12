@@ -13,8 +13,19 @@ temp = "image.jpg"
 image.save(temp)
 
 emotions = indicoio.fer(temp)
-
-print max(emotions, key=emotions.get)
-print emotions
-
 os.remove(temp)
+
+mood = max(emotions, key=emotions.get)
+songPath = "music/"
+songPath += mood + "/"
+
+
+for (dirpath, dirnames, filenames) in os.walk(songPath):
+	songPath += filenames[0]
+	break
+
+print songPath
+
+song = pyglet.media.load(songPath)
+song.play()
+pyglet.app.run()
