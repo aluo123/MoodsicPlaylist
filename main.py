@@ -13,12 +13,14 @@ temp = "image.jpg"
 image.save(temp)
 
 emotions = indicoio.fer(temp)
+
 os.remove(temp)
 
 mood = max(emotions, key=emotions.get)
 songPath = "music/"
 songPath += mood + "/"
 
+print mood
 
 for (dirpath, dirnames, filenames) in os.walk(songPath):
 	songPath += filenames[0]
